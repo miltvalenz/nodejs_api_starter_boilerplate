@@ -11,6 +11,13 @@ Install dependencies.
 ```
 npm install 
 ```
+
+Boilerplate connection to your monoDB URL.
+```
+mv .env-example .env
+```
+Replace "your_mongo_url_here" for your mongoDB URL inside .env file.
+
 ## Script
 Run the project, development mode.
 ```
