@@ -5,7 +5,8 @@ const express = require('express');
  */
 const { 
 	errorHandler,
-	validation
+	validation,
+	passport
 } = require('../middleware');
 
 const { 
@@ -20,6 +21,10 @@ const {
 	register,
 	getUsers
 } = require('../routes/users');
+
+const { 
+	logIn
+} = require('../routes/auth');
 
 /**
  * Requires all models here.
@@ -38,6 +43,8 @@ const routersInit = () => {
 	const router = express.Router();
 
 	router.use('/register', register(models, validation, registerSchema));
+
+	router.use('/login', logIn(passport));
 
 	router.use('/users', getUsers(models));
 
