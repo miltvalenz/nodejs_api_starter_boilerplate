@@ -7,8 +7,8 @@ const router = express.Router();
  * User register.
  * 
  */
- module.exports = ({ User }) => {
-     router.post('/', async(req, res, next) => {
+ module.exports = ({ User }, validation, schema) => {
+     router.post('/', validation(schema.user, 'body'), async(req, res, next) => {
         try{
             const {
                 name,
