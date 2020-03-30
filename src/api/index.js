@@ -8,7 +8,10 @@ const { errorHandler } = require('../middleware');
 /**
  * Requires all routes here.
  */
-const { getUsers } = require('../routes/users');
+const { 
+	register,
+	getUsers
+} = require('../routes/users');
 
 /**
  * Requires all models here.
@@ -25,6 +28,8 @@ const models = { User };
  */
 const routersInit = () => {
 	const router = express.Router();
+
+	router.use('/register', register(models));
 
 	router.use('/users', getUsers(models));
 
