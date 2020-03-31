@@ -8,11 +8,9 @@ const router = express.Router();
  * Login route.
  * 
  */
-module.exports = passport => {
-	router.post('/', (req, res) => {
-        console.log("siucbsduivs")
+module.exports = (passport, validation, schema) => {
+	router.post('/', validation(schema.user, 'body'), (req, res) => {
 		passport.authenticate('local', { session: false }, (error, user) => {
-            console.log('queloque');
             if (error || !user) {
 				return res.status(400).json({
 					message: 'Something is not right',
@@ -26,8 +24,6 @@ module.exports = passport => {
 				email: user.email,
 				//expires: Date.now() + parseInt(process.env.JWT_EXPIRATION_MS)
 			};
-
-			console.log(payload);
 
 			/** assigns payload to req.user */
 			req.login(payload, { session: false }, error => {
