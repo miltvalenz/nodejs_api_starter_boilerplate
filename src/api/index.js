@@ -23,7 +23,8 @@ const {
 } = require('../routes/users');
 
 const { 
-	logIn
+	logIn,
+	logOut
 } = require('../routes/auth');
 
 /**
@@ -44,9 +45,10 @@ const routersInit = () => {
 
 	router.use('/register', register(models, validation, registerSchema));
 
-	router.use('/login', logIn(passport));
+	router.use('/login', logIn(passport, validation, loginSchema));
+	router.use('/logout', logOut());
 
-	router.use('/users', getUsers(models));
+	router.use('/users', getUsers(models, passport));
 
 	// Catch endpoints errors.
 	router.use(errorHandler);
