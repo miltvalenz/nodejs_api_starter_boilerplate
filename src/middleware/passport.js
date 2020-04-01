@@ -38,7 +38,7 @@ passport.use(
 	new JWTStrategy(
 		{
 			jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-			secretOrKey: 'marico el que lo lea'
+			secretOrKey: 'marico el que lo lea jeje'
 		},
 		(jwtPayload, done) => {
 			console.log(jwtPayload);

@@ -34,7 +34,7 @@ module.exports = (passport, validation, schema) => {
 				/** generate a signed json web token and return it in the response */
 				const token = jwt.sign(
 					JSON.stringify(payload),
-					'marico el que lo lea'
+					'marico el que lo lea jeje'
 				);
 
 				const response = {
